@@ -1,0 +1,33 @@
+Mise à jour intelligente
+
+UPDATE Dishes
+SET Price = CASE
+    WHEN Price > 12 THEN Price * 0.90
+    ELSE Price * 0.95
+END;
+
+Suppressions
+
+DELETE FROM Dishes
+WHERE Price IS NULL;
+
+DELETE FROM Orders
+WHERE Total_amount < 5;
+
+Mini-analyse finale
+
+SELECT Category, ROUND(AVG(Price), 2) AS Prix_moyen
+FROM Dishes
+GROUP BY Category;
+
+SELECT SUM(Total_amount) AS Montant_total
+FROM Orders;
+
+SELECT Name, Price
+FROM Dishes
+ORDER BY Price DESC
+LIMIT 3;
+
+SELECT Firstname, Lastname
+FROM Employees
+WHERE Lastname LIKE '%a%' OR Firstname LIKE '%a%';
